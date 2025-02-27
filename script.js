@@ -26,7 +26,7 @@ function back() {
   container.style.position = "relative";
   container.style.top = "auto";
   cont8.style.marginTop = "auto";
-  conttt.style.marginTop = "";
+  conttt.style.position = "relative";
 }
 let key = "39RS9A8TZ6Y4L3PQLXZCMJ4RF";
 let main = {};
@@ -171,28 +171,6 @@ function updateDailyForecast() {
       const day = daydata[index];
       const date = new Date(day.datetime);
 
-      const minTemp = isCelsius
-        ? day.tempmin
-        : celsiusToFahrenheit(day.tempmin);
-      const maxTemp = isCelsius
-        ? day.tempmax
-        : celsiusToFahrenheit(day.tempmax);
-
-      element.querySelector(".dy").textContent = daysofweek[date.getDay()];
-      element.querySelector(".mini-img").src = weatherImg(day.icon);
-      element.querySelector(".daytemp").textContent = `${Math.round(minTemp)}°${
-        isCelsius ? "C" : "F"
-      } - ${Math.round(maxTemp)}°${isCelsius ? "C" : "F"}`;
-    }
-  });
-}
-function updateDailyForecast() {
-  dailyElements.forEach((element, index) => {
-    if (daydata[index]) {
-      const day = daydata[index];
-      const date = new Date(day.datetime);
-
-      // Convert temperatures if needed
       const minTemp = isCelsius
         ? day.tempmin
         : celsiusToFahrenheit(day.tempmin);
