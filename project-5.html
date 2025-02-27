@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav>
+        <div class="cont-2">
+          <h1>WECAST</h1>
+          <div class="cont-1">
+            <a href="#">Home</a>
+            <a href="#">News</a>
+            <a href="#">Contact</a>
+            <a href="#">Offer</a>
+          </div>
+          <p class="deg c" onclick="convert()">&deg;C</p>
+          <p class="deg f" onclick="convert()">&deg;F</p>
+          <div class="mode" onclick="mode()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#da77f2"
+              class="icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+              />
+            </svg>
+          </div>
+
+          <button class="loc">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="ic"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+              />
+            </svg>
+            Location
+          </button>
+        </div>
+        <h1 class="we">WECAST</h1>
+        <span onclick="menu()" class="menu">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </span>
+        <div class="cont-3">
+          <p class="X" onclick="back()">X</p>
+
+          <div class="cont-1">
+            <a href="#">Home</a>
+            <a href="#">News</a>
+            <a href="#">Contact</a>
+            <a href="#">Offer</a>
+          </div>
+          <p class="deg c" onclick="convert()">&deg;C</p>
+          <p class="deg f" onclick="convert()">&deg;F</p>
+          <div class="mode" onclick="mode()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#da77f2"
+              class="icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+              />
+            </svg>
+          </div>
+          <button class="loc">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="ic"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+              />
+            </svg>
+            Location
+          </button>
+        </div>
+      </nav>
+
+      <div class="cont-4">
+        <div class="cont-6">
+          <form class="form">
+            <!-- <label for="city">Enter a city</label>
+            <br /> -->
+
+            <input type="text" id="location" placeholder="Enter a city" />
+            <p class="border"></p>
+            <button onclick="search()" type="button" class="submit">
+              Search
+            </button>
+          </form>
+          <p id="p"></p>
+          <!-- <p class="date" id="date">Monday <span id="time">05 : 30</span></p> -->
+
+          <div class="cont-5">
+            <p class="im">
+              <span id="wind">11.6m/s</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="#fff"
+                background-color="#da77f2"
+                viewBox="0 0 256 256"
+                class="w"
+              >
+                <path
+                  d="M184,184a32,32,0,0,1-32,32c-13.7,0-26.95-8.93-31.5-21.22a8,8,0,0,1,15-5.56C137.74,195.27,145,200,152,200a16,16,0,0,0,0-32H40a8,8,0,0,1,0-16H152A32,32,0,0,1,184,184Zm-64-80a32,32,0,0,0,0-64c-13.7,0-26.95,8.93-31.5,21.22a8,8,0,0,0,15,5.56C105.74,60.73,113,56,120,56a16,16,0,0,1,0,32H24a8,8,0,0,0,0,16Zm88-32c-13.7,0-26.95,8.93-31.5,21.22a8,8,0,0,0,15,5.56C193.74,92.73,201,88,208,88a16,16,0,0,1,0,32H32a8,8,0,0,0,0,16H208a32,32,0,0,0,0-64Z"
+                ></path>
+              </svg>
+            </p>
+            <p class="im">
+              <span id="rain">10mm</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="#fff"
+                viewBox="0 0 256 256"
+                class="w"
+              >
+                <path
+                  d="M158.66,196.44l-32,48a8,8,0,1,1-13.32-8.88l32-48a8,8,0,0,1,13.32,8.88ZM232,92a76.08,76.08,0,0,1-76,76H132.28l-29.62,44.44a8,8,0,1,1-13.32-8.88L113.05,168H76A52,52,0,0,1,76,64a53.26,53.26,0,0,1,8.92.76A76.08,76.08,0,0,1,232,92Zm-16,0A60.06,60.06,0,0,0,96,88.46a8,8,0,0,1-16-.92q.21-3.66.77-7.23A38.11,38.11,0,0,0,76,80a36,36,0,0,0,0,72h80A60.07,60.07,0,0,0,216,92Z"
+                ></path>
+              </svg>
+            </p>
+            <p class="im">
+              <span id="humidity">259rh</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="#fff"
+                viewBox="0 0 256 256"
+                class="w"
+              >
+                <path
+                  d="M232,40a8,8,0,0,1-8,8H56a8,8,0,0,1,0-16H224A8,8,0,0,1,232,40ZM184,72a8,8,0,0,0-8-8H32a8,8,0,0,0,0,16H176A8,8,0,0,0,184,72Zm-16,32a8,8,0,0,0-8-8H56a8,8,0,0,0,0,16H160A8,8,0,0,0,168,104Zm16,32a8,8,0,0,0-8-8H88a8,8,0,0,0,0,16h88A8,8,0,0,0,184,136Zm0,24H120a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm-24,32H128a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16Zm-32,32H112a8,8,0,0,0,0,16h16a8,8,0,0,0,0-16Z"
+                ></path>
+              </svg>
+            </p>
+            <p class="im">
+              <span id="sunshine">45m²</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="#fff"
+                viewBox="0 0 256 256"
+                class="w"
+              >
+                <path
+                  d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"
+                ></path>
+              </svg>
+            </p>
+          </div>
+        </div>
+        <div class="cont-7">
+          <h1>Today</h1>
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/10484/10484062.png"
+            alt="temp"
+            id="main-img"
+          />
+          <p class="daytemp" id="temo">
+            Temperature: 70&#8451;<span id="type"></span>
+          </p>
+          <p class="t"></p>
+          <p id="visibility">Visibility: 0</p>
+          <p id="pressure">Pressure: 1000pa</p>
+          <p id="dew">Dew: 20</p>
+        </div>
+      </div>
+      <!-- <div class="hour-data">
+        <div class="hrly one">
+          <p class="hour">Mon</p>
+          <img
+            class="mini-img"
+            src="https://cdn-icons-png.flaticon.com/128/704/704845.png"
+            alt="img"
+          />
+          <p class="daytemp">97&#8451;</p>
+        </div>
+        <div class="hrly two">
+          <p class="hour">Mon</p>
+          <img
+            class="mini-img"
+            src="https://cdn-icons-png.flaticon.com/128/704/704845.png"
+            alt="img"
+          />
+          <p class="daytemp">67&#8451;</p>
+        </div>
+        <div class="hrly three">
+          <p class="hour">Mon</p>
+          <img
+            class="mini-img"
+            src="https://cdn-icons-png.flaticon.com/128/704/704845.png"
+            alt="img"
+          />
+          <p class="daytemp">47&#8451;</p>
+        </div>
+        <div class="hrly four">
+          <p class="hour">Mon</p>
+          <img
+            class="mini-img"
+            src="https://cdn-icons-png.flaticon.com/128/704/704845.png"
+            alt="img"
+          />
+          <p class="daytemp">27&#8451;</p>
+        </div>
+        <div class="hrly five">
+          <p class="hour">Mon</p>
+          <img
+            class="mini-img"
+            src="https://cdn-icons-png.flaticon.com/128/704/704845.png"
+            alt="img"
+          />
+          <p class="daytemp">57&#8451;</p>
+        </div>
+        <div class="hrly six">
+          <p class="hour">Mon</p>
+          <img
+            class="mini-img"
+            src="https://cdn-icons-png.flaticon.com/128/704/704845.png"
+            alt="img"
+          />
+          <p class="daytemp">25&#8451;</p>
+        </div>
+        <div class="hrly seven">
+          <p class="hour">Mon</p>
+          <img
+            class="mini-img"
+            src="https://cdn-icons-png.flaticon.com/128/704/704845.png"
+            alt="img"
+          />
+          <p class="daytemp">25&#8451;;</p>
+        </div>
+      </div> -->
+      <div class="day-data">
+        <div class="first siku">
+          <p class="dy">Monday</p>
+          <img
+            class="mini-img"
+            src="https://cdn-icons-png.flaticon.com/128/7865/7865939.png"
+            alt="img"
+          />
+          <p class="daytemp">26&#8451; - 27&#8451;</p>
+        </div>
+        <div class="second siku">
+          <p class="dy">Tuesday</p>
+          <img
+            class="mini-img"
+            src="https://cdn-icons-png.flaticon.com/128/7865/7865939.png"
+            alt="img"
+          />
+          <p class="daytemp">25&#8451; - 27&#8451;</p>
+        </div>
+        <div class="fourth siku">
+          <p class="dy">Wednesday</p>
+          <img
+            class="mini-img"
+            src="https://cdn-icons-png.flaticon.com/128/7865/7865939.png"
+            alt="img"
+          />
+          <p class="daytemp">25&#8451; - 27&#8451;</p>
+        </div>
+        <div class="fifth siku">
+          <p class="dy">Thursday</p>
+          <img
+            class="mini-img"
+            src="https://cdn-icons-png.flaticon.com/128/7865/7865939.png"
+            alt="img"
+          />
+          <p class="daytemp">25&#8451; - 27&#8451;</p>
+        </div>
+        <div class="fifth siku">
+          <p class="dy">Friday</p>
+          <img
+            class="mini-img"
+            src="https://cdn-icons-png.flaticon.com/128/7865/7865939.png"
+            alt="img"
+          />
+          <p class="daytemp">25&#8451; - 27&#8451;</p>
+        </div>
+        <div class="sixth siku">
+          <p class="dy">Saturday</p>
+          <img
+            class="mini-img"
+            src="https://cdn-icons-png.flaticon.com/128/7865/7865939.png"
+            alt="img"
+          />
+          <p class="daytemp">25&#8451; - 27&#8451;</p>
+        </div>
+        <div class="seventh siku">
+          <p class="dy">Sunday</p>
+          <img
+            class="mini-img"
+            src="https://cdn-icons-png.flaticon.com/128/7865/7865939.png"
+            alt="img"
+          />
+          <p class="daytemp">25&#8451; - 27&#8451;</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
